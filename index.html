@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultet Kalkulator</title>
+</head>
+<body>
+
+<div id="fakultet">
+    <form>
+        <input name="tall" placeholder="Tall" type="number">
+        <button type="submit">Regn ut fakultet</button>
+    </form>
+    <p>
+        Resultatet er: <span class="resultat"></span>
+    </p>
+</div>
+
+<script type="module">
+    import { fakultet } from './fakultet.js'
+
+    function regnUt(evt) {
+        evt.preventDefault();
+        const input = document.querySelector('#fakultet input');
+        const output = document.querySelector('#fakultet .resultat');
+
+        // parseInt konverterer en streng til et heltall
+        const tall = parseInt(input.value);
+
+        if (!isNaN(tall)) {
+            output.textContent = fakultet(tall);
+        } else {
+            output.textContent = "Vennligst skriv inn et tall";
+        }
+    }
+
+    document.querySelector('#fakultet button')
+        .addEventListener('click', regnUt);
+</script>
+
+</body>
