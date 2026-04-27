@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Kalkulator</title>
+</head>
+<body>
+<div id="fibonacci">
+    <form>
+        <input name="tall" placeholder="Tall" type="number">
+        <button type="submit">Regn ut Fibonacci</button>
+    </form>
+    <p>
+        Resultatet er: <span class="resultat"></span>
+    </p>
+</div>
+<script>
+    import { fibonacci } from './fibonacci.js'
+
+function regnUtFibonacci(evt) {
+    evt.preventDefault();
+    const input = document.querySelector('#fibonacci input');
+    const output = document.querySelector('#fibonacci .resultat');
+
+    const tall = parseInt(input.value);
+
+    if (!isNaN(tall)) {
+        output.textContent = fibonacci(tall);
+    } else {
+        output.textContent = "Vennligst skriv inn et tall";
+    }
+}
+
+document.querySelector('#fibonacci button')
+    .addEventListener('click', regnUtFibonacci);
+</script>
+</body>
+</html>
